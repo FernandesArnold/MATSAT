@@ -1,0 +1,1090 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document>
+ <Icons>
+  <Icon size="64" bpp="32" format="png"><![CDATA[89504e470d0a1a0a0000000d4948445200000040000000400806000000aa6971de00000006624b474400ff00ff00ffa0bda793000000097048597300000ec400000ec401952b0e1b0000046349444154789ced592b70db40107ddbe94ca0ca5c666898b240c3c04043434343c34c89613a25868181290b344c993b25ee94645ad229ea1416dd166855c9ba8ff62cd997a4da190349a777efdeede7b42666c6ff6c2f5213486dbd00a909a436b7004443263adb1b95e8044453105d8268b427c600440b269a8128db970a139d87def779c06f00ef40b4d863c23306be30300600063e30d1320a8468cac047063200a70c7c62a2c91e5c96006600fef807317b7f06581ae096812c34ae327e66803503839d67c0428b23735e337052793f33c00d030b0d0f19bfd68cd7805d18e0de006781312706581960b543dc81c3c03080711b22ed14c71e736e802d03638d58cd02e4e44622c2d29a1c1818606d809912676391038622ce8502632abb9bd5ee6706b836c09de581d10200274e77cd5df9c10057426425d7b677e4b13bf6105d8b4b4f0d70253b76eae03076611be0ace0618049c18381a98347508cd04e6d3d0b1b18602e6acf1c1e9119e0d6001b59e8d600e78e454c0463eec038adbc7f2fde3172cc3337c08df0b0364cc261131221e46a0399f852eb4eb233db1d57ce71eed43865ae18d570efb5712df96429f30613af06ecd2b903f6e2e7ce0ab08b13ae04e5183bc995a1336fe03bd256009d00e50e6c9ca039b13bc90bdeec5cd9dd8d23de8bb2d5e82512f7b690e5aebb43374a0057122c277860602109ae488a568c3390590bcdef0f25ae57150c77d902464e8fca85dc4aec8f7778b978c40a508939df0296e28e4b4f965f19e09724327b71b998b30a46fde034aa24d01fb2e3c3da9881ccb3960db184aae4a4a16b9de110286b7f737d0fbd532e261cbbe5f8b195f03487311b6721387b94c1dd9d5a49cd0eba9294b58d2f594aecde349ce28a44ea3a83e80e5c52750cb0d408a5525316b75bdedc220593a0e0d8c7e11ce3c60057ca0d711eb925ac9ce78e56025494bd955d9848029bfe4b467a9ce2903317779fc8f5448b210bcd8fce258f8d08a3fa702b7ec4cc71df984463ce3f315f03f846c05b307f8fc4c818b804f006c04fc1f81a89712a18af84c77b307f8ec200f610e09959df124b4d20b5f502a42690da7a015213486d2fb5038968a75e3233754fa79d1111c7f26a14a058781d789fc99ae64921aa2a045cc49899ea5ef1142de8014dbbe2f20adff302ab3aa6785edcab7a5b7d7c7dac8f43aca9734093b9c4aadff35d57171cf3beef5e8c1db50ac412ad8f3f448ee8cc0300db3d0f655dced3a900c7c8e2aeb06883170c81a64c7fec2a708852a9ca01ae856ac81c5aa02ef01b43405b7e5cde12bb5bbe43976f8e2ece227d47283581d4d60b909a406aeb05484d20b5f502841ea63a051ef384f9283c2065bbed510890d23a6d8854afb5dda25037a8b8efeb24b9b07dcd159f75224053a726f45c4338d4196afb79acee0ab7b1b6311df37eec0792fa6bb06ef54934933ec62e72673940d31be8b293d3951da50aa4fad343630713e0a91ca23a0981a66e90a693d3d40dd2ce1d9b049f65472826e49efc49b0ef09a2ddb7c4b310a08d3df910686bbd00a909a4b6bfa49fef9180fb3e820000000049454e44ae426082]]>
+</Icon>
+ </Icons>
+ <Model version="4.8" build="4.8.2.10124">
+  <Sidops><![CDATA[model 55.2 40.6
+ description '<Information>
+ <Description>
+    <Version>4.8</Version>
+<IsMainModel>0</IsMainModel>
+  <KeepParameterValues>True</KeepParameterValues>
+    <LibraryPath>C:\Users\af2vc\OneDrive - University of Missouri\Documents\MATLAB\SP 2022\Text_parser\test_models\CentralHeatingSystem.emx</LibraryPath>
+  <TimeStamp>2022-11-11 16:19:37</TimeStamp>
+</Description>
+</Information>';
+ type Mainmodel
+ end;
+ icon bg
+  figures
+   group
+    spline 37.3 42.5 43.3 46.1 49.4 42.5 55.3 46.1 61.2 42.5 67.1 46.1 73.1 42.5 color 255;
+    spline 37.3 38.9 43.3 42.5 49.4 38.9 55.3 42.5 61.2 38.9 67.1 42.5 73.1 38.9 color 255;
+    spline 37.3 35.2 43.3 38.9 49.4 35.2 55.3 38.9 61.2 35.2 67.1 38.9 73.1 35.2 color 255;
+   end;
+   text 'Central' 54.9 56.6 color 0 14;
+   text 'Heating' 56 68.8 color 0 14;
+ end;
+ implementation bg
+  submodels
+   Cradiator 352 272
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Bond Graph\C.emx</LibraryPath>
+  <TimeStamp>2007-10-31 10:43:59</TimeStamp>
+</Description>';
+    type C
+     ports
+      power in p;
+      signal out state;
+     restrictions
+      causality preferred out p;
+    end;
+    icon bg
+     figures
+      text 'C' 352 272 color 0 18 bold;
+    end;
+    implementation eq
+parameters
+	real c = 1.0;
+equations
+    state = int(p.f);
+    p.e = state / c;
+implementation_end;
+   Croom 496 224
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Bond Graph\C.emx</LibraryPath>
+  <TimeStamp>2007-10-31 10:43:59</TimeStamp>
+</Description>';
+    type C
+     ports
+      power in p;
+      signal out state;
+     restrictions
+      causality preferred out p;
+    end;
+    icon bg
+     figures
+      text 'C' 496 224 color 0 18 bold;
+    end;
+    implementation eq
+parameters
+	real c = 4.0;
+equations
+    state = int(p.f);
+    p.e = state / c;
+implementation_end;
+   Fradiator 304 224
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Bond Graph\OneJunction.emx</LibraryPath>
+  <TimeStamp>2007-9-27 9:51:18</TimeStamp>
+</Description>';
+    knot OneJunction
+     ports
+      power knot duplicatable none p [1];
+      signal knot out flow [1];
+     restrictions
+      causality constraint one_out p;
+    end;
+    icon bg
+     figures
+      text '1' 304 224 color 0 18 bold;
+    end;
+    implementation eq
+equations
+	sum (direct (p.e)) = 0;
+	equal (collect (p.f));
+	flow = first (p.f);
+implementation_end;
+   Froom 400 224
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Bond Graph\OneJunction.emx</LibraryPath>
+  <TimeStamp>2007-9-27 9:51:18</TimeStamp>
+</Description>';
+    knot OneJunction
+     ports
+      power knot duplicatable none p [1];
+      signal knot out flow [1];
+     restrictions
+      causality constraint one_out p;
+    end;
+    icon bg
+     figures
+      text '1' 400 224 color 0 18 bold;
+    end;
+    implementation eq
+equations
+	sum (direct (p.e)) = 0;
+	equal (collect (p.f));
+	flow = first (p.f);
+implementation_end;
+   heater 240 224
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Bond Graph\MSe.emx</LibraryPath>
+  <TimeStamp>2007-9-25 12:2:44</TimeStamp>
+</Description>';
+    type MSe
+     ports
+      power out p;
+      signal in effort;
+     restrictions
+      causality fixed out p;
+    end;
+    icon bg
+     figures
+      text 'MSe' 240 224 color 0 18 bold;
+    end;
+    implementation eq
+variables
+	real flow;
+equations
+	p.e = effort;
+	flow = p.f;
+implementation_end;
+   heat_anticip 352 304
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Block Diagram\Integrate.emx</LibraryPath>
+  <TimeStamp>2007-9-26 12:3:23</TimeStamp>
+</Description>';
+    type Integrate
+     ports
+      signal in input;
+      signal out output;
+    end;
+    icon bg
+     figures
+      rectangle 336 288 368 320 color 0 fill 15132390;
+      text '∫' 352 304.3 color 16711680 'Lucida Sans' 21 italic;
+    end;
+    implementation eq
+parameters
+	real initial = 0.0;		// initial value
+equations
+	output = int (input, initial);
+     implementation_end;
+   K_heat 192 304
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Block Diagram\Gain.emx</LibraryPath>
+  <TimeStamp>2007-9-26 12:15:12</TimeStamp>
+</Description>';
+    type Gain
+     ports
+      signal in input;
+      signal out output;
+    end;
+    icon bg
+     figures
+      rectangle 176.1 288 207.9 320 color 0 fill 15132390;
+      text 'K' 192 304 color 16711680 16 bold;
+    end;
+    implementation eq
+parameters
+	real K = 0.0;		// gain
+equations
+	output = K * input;
+    implementation_end;
+   minus1 240 304
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Block Diagram\PlusMinus.emx</LibraryPath>
+  <TimeStamp>2007-9-27 10:15:13</TimeStamp>
+</Description>';
+    knot PlusMinus
+     ports
+      signal knot duplicatable in plus [1];
+      signal knot duplicatable in minus [1];
+      signal knot out output [1];
+    end;
+    icon bg ellipse
+     figures
+      ellipse 232 296 248 312 color 0 fill 16777215;
+    end;
+    implementation eq
+equations
+    output = sum (collect (plus)) - sum (collect (minus));
+    implementation_end;
+   relay 160 224
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Block Diagram Non-Linear\SignalLimiter-RelayHysteresis.emx</LibraryPath>
+  <TimeStamp>2007-9-26 12:50:34</TimeStamp>
+</Description>';
+    type 'SignalLimiter-RelayHysteresis'
+     ports
+      signal in input;
+      signal out output;
+    end;
+    icon bg
+     figures
+      rectangle 144 208 176 240 color 0 fill 15132390;
+      line 159.9 212.5 159.9 237 color 0 fill 15132390;
+      line 147 224.2 172.7 224.2 color 0 fill 15132390;
+      spline 156.6 224.2 156.5 232.9 color 16711680 fill 15132390 width 2;
+      spline 163 215.6 172.1 215.1 color 16711680 fill 15132390 width 2;
+      spline 148.1 232.9 156.6 232.7 color 16711680 fill 15132390 width 2;
+      line 151.7 232.5 151.7 224.2 168 224.5 color 16711680 fill 15132390 width 2;
+      line 162.9 215.5 162.9 224.2 color 16711680 fill 15132390 width 2;
+      line 167.7 215.5 167.7 224.5 color 16711680 fill 15132390 width 2;
+    end;
+    implementation eq
+parameters
+	real maximum = 75.0;
+	real minimum = 0.0;
+	real zone = 0.1;
+	real hysteresis = 0.2;
+variables
+    real hyst, halfhyst;
+    real oldsw, halfzone;
+equations
+	hyst = if (oldsw > 0.0) then
+		hysteresis
+	else
+		if (oldsw < 0.0) then
+			-hysteresis
+		else
+			0.0
+		end
+	end;
+	halfhyst = hyst / 2;
+	halfzone = zone / 2;
+	oldsw = dly (output, 0.0);
+   
+	output = if (input + hyst) > halfzone then
+		if input + halfhyst < 0.0 then
+			minimum
+		 else
+			maximum
+		end
+	else
+		 if input + hyst < (-halfzone) then
+			if input + halfhyst > 0.0 then
+				maximum
+			else
+				minimum
+               		end
+		else
+			0.0
+		end
+	end;    implementation_end;
+   Rloss 448 176
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Bond Graph\R.emx</LibraryPath>
+  <TimeStamp>2007-9-25 12:3:18</TimeStamp>
+</Description>';
+    type R
+     ports
+      power in p;
+    end;
+    icon bg
+     figures
+      text 'R' 448 176 color 0 18 bold;
+    end;
+    implementation eq
+parameters
+	real r = 1.0;
+equations					
+	p.e = r * p.f;
+implementation_end;
+   Rradiator 304 176
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Bond Graph\R.emx</LibraryPath>
+  <TimeStamp>2007-9-25 12:3:18</TimeStamp>
+</Description>';
+    type R
+     ports
+      power in p;
+    end;
+    icon bg
+     figures
+      text 'R' 304 176 color 0 18 bold;
+    end;
+    implementation eq
+parameters
+	real r = 0.1;
+equations					
+	p.e = r * p.f;
+implementation_end;
+   Rroom 400 176
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Bond Graph\R.emx</LibraryPath>
+  <TimeStamp>2007-9-25 12:3:18</TimeStamp>
+</Description>';
+    type R
+     ports
+      power in p;
+    end;
+    icon bg
+     figures
+      text 'R' 400 176 color 0 18 bold;
+    end;
+    implementation eq
+parameters
+	real r = 1.0;
+equations					
+	p.e = r * p.f;
+implementation_end;
+   Splitter2 192 224
+    description '<Description><Version>4.0</Version>
+  <TimeStamp>2007-10-31 11:28:29</TimeStamp>
+<IsMainModel>1</IsMainModel>
+ <KeepParameterValues>False</KeepParameterValues>
+</Description>';
+    knot Splitter
+     ports
+      signal knot duplicatable out output [1];
+      signal knot in input [1];
+    end;
+    icon bg ellipse
+     figures
+      ellipse 188.8 220.8 195.2 227.2 color -1 fill 0;
+      ellipse 187.7 219.7 196.3 228.3 color -1;
+     terminals
+      input 192 224 fixed;
+    end;
+    implementation eq
+equations
+    collect (output) = input;
+implementation_end;
+   Splitter3 400 304
+    description '<Description><Version>4.0</Version>
+  <TimeStamp>2007-10-31 11:28:29</TimeStamp>
+<IsMainModel>1</IsMainModel>
+ <KeepParameterValues>False</KeepParameterValues>
+</Description>';
+    knot Splitter
+     ports
+      signal knot duplicatable out output [1];
+      signal knot in input [1];
+    end;
+    icon bg ellipse
+     figures
+      ellipse 396.8 300.8 403.2 307.2 color -1 fill 0;
+      ellipse 395.7 299.7 404.3 308.3 color -1;
+     terminals
+      input 400 304 fixed;
+    end;
+    implementation eq
+equations
+    collect (output) = input;
+implementation_end;
+   tau 288 304
+    description '<Description>
+ <Version>4.0</Version>
+ <IsMainModel>1</IsMainModel>
+ <KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Block Diagram\Attenuate.emx</LibraryPath>
+  <TimeStamp>2007-10-31 13:47:6</TimeStamp>
+</Description>';
+    type Attenuate
+     ports
+      signal in input;
+      signal out output;
+    end;
+    icon bg
+     figures
+      rectangle 272 288 304 320 color 0 fill 15132390;
+      text 'K' 295.5 310.4 color 16711680 16 bold;
+      text '1' 281.6 298.7 color 16711680 16 bold;
+      line 281.6 314.7 295.5 295.5 color 16711680 width 2;
+    end;
+    implementation eq
+parameters
+	real K = 0.025;		// attenuation (divison parameter) 
+equations
+	output = input / K;
+       implementation_end;
+   Tradiator 352 224
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Bond Graph\ZeroJunction.emx</LibraryPath>
+  <TimeStamp>2007-9-27 9:51:43</TimeStamp>
+</Description>';
+    knot ZeroJunction
+     ports
+      power knot duplicatable none p [1];
+      signal knot out effort [1];
+     restrictions
+      causality constraint one_in p;
+    end;
+    icon bg
+     figures
+      text '0' 352 224 color 0 18 bold;
+    end;
+    implementation eq
+equations
+	sum (direct (p.f)) = 0;
+	equal (collect (p.e));
+	effort = first (p.e);
+implementation_end;
+   Tref 64 224
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Sources\SignalGenerator-Step.emx</LibraryPath>
+  <TimeStamp>2007-9-27 16:2:44</TimeStamp>
+</Description>';
+    type 'SignalGenerator-Step'
+     ports
+      signal out output;
+    end;
+    icon bg
+     figures
+      group
+       rectangle 48 208 80 240 color 0 fill 15132390;
+       line 57.6 220.8 74.6 220.8 color 16711680 width 2;
+       line 50.9 232 77.1 232 color 0;
+       line 53.1 232.1 57.7 232.1 57.7 220.7 color 16711680 width 2;
+       line 53.1 216 53.1 234.2 color 0;
+      end;
+    end;
+    implementation eq
+parameters
+	real amplitude = 20.0;
+	real start_time = 0.5 {s};
+variables
+	boolean hidden change;
+equations
+	"calculate at least at the start time"
+	change = timeevent (start_time);
+	
+	"calculate the step signal"
+	output = amplitude * step (start_time);     implementation_end;
+   Troom 448 224
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Bond Graph\ZeroJunction.emx</LibraryPath>
+  <TimeStamp>2007-9-27 9:51:43</TimeStamp>
+</Description>';
+    knot ZeroJunction
+     ports
+      power knot duplicatable none p [1];
+      signal knot out effort [1];
+     restrictions
+      causality constraint one_in p;
+    end;
+    icon bg
+     figures
+      text '0' 448 224 color 0 18 bold;
+    end;
+    implementation eq
+equations
+	sum (direct (p.f)) = 0;
+	equal (collect (p.e));
+	effort = first (p.e);
+implementation_end;
+   T_appear 448 304
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Block Diagram\PlusMinus.emx</LibraryPath>
+  <TimeStamp>2007-9-27 10:15:13</TimeStamp>
+</Description>';
+    knot PlusMinus
+     ports
+      signal knot duplicatable in plus [1];
+      signal knot duplicatable in minus [1];
+      signal knot out output [1];
+    end;
+    icon bg ellipse
+     figures
+      ellipse 440 296 456 312 color 0 fill 16777215;
+    end;
+    implementation eq
+equations
+    output = sum (collect (plus)) - sum (collect (minus));
+    implementation_end;
+   T_error 112 224
+    description '<Description><Version>4.0</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues>
+   <LibraryPath>Signal\Block Diagram\PlusMinus.emx</LibraryPath>
+  <TimeStamp>2007-9-27 10:15:13</TimeStamp>
+</Description>';
+    knot PlusMinus
+     ports
+      signal knot duplicatable in plus [1];
+      signal knot duplicatable in minus [1];
+      signal knot out output [1];
+    end;
+    icon bg ellipse
+     figures
+      ellipse 104 216 120 232 color 0 fill 16777215;
+    end;
+    implementation eq
+equations
+    output = sum (collect (plus)) - sum (collect (minus));
+    implementation_end;
+  end;
+  connections
+   Fradiator\p => Rradiator\p;
+   Fradiator\p => Tradiator\p;
+   Froom\p => Rroom\p;
+   Froom\p => Troom\p;
+   heat_anticip\output -> Splitter3\input;
+   heater\p => Fradiator\p;
+   K_heat\output -> minus1\plus;
+   minus1\output -> tau\input;
+   relay\output -> Splitter2\input;
+   Splitter2\output -> heater\effort;
+   Splitter2\output -> K_heat\input;
+   Splitter3\output -> minus1\minus 400 336 240 336;
+   Splitter3\output -> T_appear\plus;
+   T_appear\output -> T_error\minus 448 368 112 368;
+   T_error\output -> relay\input;
+   tau\output -> heat_anticip\input;
+   Tradiator\p => Cradiator\p;
+   Tradiator\p => Froom\p;
+   Tref\output -> T_error\plus;
+   Troom\effort -> T_appear\plus;
+   Troom\p => Croom\p;
+   Troom\p => Rloss\p;
+  end;
+  figures
+   text '1. Start the simulator (Model - Start Simulator).
+2. Run a simulation (Simulator Window - Simulation - Run).' 190.7 404.9 color 6698260 fill 16777215 16;
+   text 'This demo shows the performance of a thermostat-controlled central heating system. In order 
+to reduce the temperature fluctuations, a small heating element is part of the thermostat. 
+This makes the measured temperature a little bit higher than the real temperature. It 
+anticipates on the heat still to be delivered. Therefore, it is called the heat anticipation. It has 
+been modeled as a first order transfer function.' 292 105 color 6698260 fill 16777215 16;
+   text 'Central Heating System' 132 32 color 8388608 fill 16777215 24;
+ implementation_end;
+]]>
+</Sidops>
+ </Model>
+ <Experiments>
+     <DefaultExperiment><![CDATA[Converted Experiment]]>
+</DefaultExperiment>
+  <Experiment>
+    <Name>Converted Experiment</Name>
+    <CreatedBy></CreatedBy>
+    <Info></Info>
+<ExpData>
+  <VersionNumber>4.8</VersionNumber>
+  <ModelProperties>
+  </ModelProperties>
+  <Variables>
+   <Parameters>
+   </Parameters>
+   <Initials>
+    <Variable>
+     <Name>Cradiator\state_initial</Name>
+     <Value>0</Value>
+    </Variable>
+    <Variable>
+     <Name>Croom\state_initial</Name>
+     <Value>0</Value>
+    </Variable>
+   </Initials>
+  </Variables>
+  <PlotSpecs>
+   <VarNames>
+    <VarName>time</VarName>
+    <VarName>relay\output</VarName>
+    <VarName>Troom\effort</VarName>
+    <VarName>heat_anticip\output</VarName>
+   </VarNames>
+   <Plots>
+    <Plot>
+     <PlotType>GraphPlot</PlotType>
+     <BasePlot>
+       <PlotId>1</PlotId>
+       <UseWindowsBGColor>false</UseWindowsBGColor>
+       <BGColor>16777215</BGColor>
+       <PlotIsVisible>true</PlotIsVisible>
+     </BasePlot>
+     <Grid>
+      <DrawGrid>true</DrawGrid>
+      <GridColor>15780518</GridColor>
+      <GridBorderLineColor>12624260</GridBorderLineColor>
+      <GridZeroLineColor>0</GridZeroLineColor>
+      <XTicks>10</XTicks>
+      <YTicks>10</YTicks>
+      <ZTicks>10</ZTicks>
+      <Use3DLook>false</Use3DLook>
+     </Grid>
+     <PlotBGColor>16777215</PlotBGColor>
+     <ShowPlotTitle>true</ShowPlotTitle>
+     <TitlePosition>1</TitlePosition>
+     <PlotTitle>relay output</PlotTitle>
+     <ShowXValues>true</ShowXValues>
+     <Fonts>
+      <TitleFont>
+       <Name>Arial</Name>
+       <Height>-10</Height>
+       <PitchFamily>34</PitchFamily>
+       <Weight>400</Weight>
+       <Italic>0</Italic>
+       <UnderLine>0</UnderLine>
+       <StrikeOut>0</StrikeOut>
+       <Color>0</Color>
+      </TitleFont>
+      <LabelFont>
+       <Name>Arial</Name>
+       <Height>-10</Height>
+       <PitchFamily>34</PitchFamily>
+       <Weight>400</Weight>
+       <Italic>0</Italic>
+       <UnderLine>0</UnderLine>
+       <StrikeOut>0</StrikeOut>
+       <Color>0</Color>
+      </LabelFont>
+      <ValuesFont>
+       <Name>Arial</Name>
+       <Height>-10</Height>
+       <PitchFamily>34</PitchFamily>
+       <Weight>400</Weight>
+       <Italic>0</Italic>
+       <UnderLine>0</UnderLine>
+       <StrikeOut>0</StrikeOut>
+       <Color>8388608</Color>
+      </ValuesFont>
+      <LegendFont>
+       <Name>Arial</Name>
+       <Height>12</Height>
+       <PitchFamily>34</PitchFamily>
+       <Weight>400</Weight>
+       <Italic>0</Italic>
+       <UnderLine>0</UnderLine>
+       <StrikeOut>0</StrikeOut>
+       <Color>0</Color>
+      </LegendFont>
+     </Fonts>
+     <SharedXAxis>true</SharedXAxis>
+     <SharedYAxis>false</SharedYAxis>
+     <SharedZAxis>false</SharedZAxis>
+     <XAxes>
+      <Axis>
+       <Minimum>0.0</Minimum>
+       <Maximum>5.00199999999967</Maximum>
+       <Linear>true</Linear>
+       <Scaling>3</Scaling>
+       <Label>time</Label>
+      </Axis>
+     </XAxes>
+     <YAxes>
+      <Axis>
+       <Minimum>-10.0</Minimum>
+       <Maximum>90.0</Maximum>
+       <Linear>true</Linear>
+       <Scaling>2</Scaling>
+       <Label>relay output</Label>
+      </Axis>
+     </YAxes>
+     <ZAxes>
+     </ZAxes>
+     <Curves>
+      <Curve>
+       <LineColor>16711680</LineColor>
+       <LineStyle>1</LineStyle>
+       <TickColor>16711680</TickColor>
+       <TickStyle>0</TickStyle>
+       <CurveVisible>true</CurveVisible>
+       <PixelThresshold>10</PixelThresshold>
+       <LineThickness>1</LineThickness>
+       <LineOrder>1</LineOrder>
+       <ShowYValues>true</ShowYValues>
+       <XCurveData>
+        <ShowUnit>true</ShowUnit>
+        <VarName>time</VarName>
+       </XCurveData>
+       <YCurveData>
+        <ShowUnit>true</ShowUnit>
+        <VarName>relay\output</VarName>
+       </YCurveData>
+      </Curve>
+     </Curves>
+     <Legenda>
+      <ShowLegenda>true</ShowLegenda>
+      <BorderPenColor>12624260</BorderPenColor>
+      <BackgroundColor>16777215</BackgroundColor>
+     </Legenda>
+    </Plot>
+    <Plot>
+     <PlotType>GraphPlot</PlotType>
+     <BasePlot>
+       <PlotId>2</PlotId>
+       <UseWindowsBGColor>false</UseWindowsBGColor>
+       <BGColor>16777215</BGColor>
+       <PlotIsVisible>true</PlotIsVisible>
+     </BasePlot>
+     <Grid>
+      <DrawGrid>true</DrawGrid>
+      <GridColor>15780518</GridColor>
+      <GridBorderLineColor>12624260</GridBorderLineColor>
+      <GridZeroLineColor>0</GridZeroLineColor>
+      <XTicks>10</XTicks>
+      <YTicks>10</YTicks>
+      <ZTicks>10</ZTicks>
+      <Use3DLook>false</Use3DLook>
+     </Grid>
+     <PlotBGColor>16777215</PlotBGColor>
+     <ShowPlotTitle>true</ShowPlotTitle>
+     <TitlePosition>1</TitlePosition>
+     <PlotTitle>room temperature</PlotTitle>
+     <ShowXValues>true</ShowXValues>
+     <Fonts>
+      <TitleFont>
+       <Name>Arial</Name>
+       <Height>-10</Height>
+       <PitchFamily>34</PitchFamily>
+       <Weight>400</Weight>
+       <Italic>0</Italic>
+       <UnderLine>0</UnderLine>
+       <StrikeOut>0</StrikeOut>
+       <Color>0</Color>
+      </TitleFont>
+      <LabelFont>
+       <Name>Arial</Name>
+       <Height>-10</Height>
+       <PitchFamily>34</PitchFamily>
+       <Weight>400</Weight>
+       <Italic>0</Italic>
+       <UnderLine>0</UnderLine>
+       <StrikeOut>0</StrikeOut>
+       <Color>0</Color>
+      </LabelFont>
+      <ValuesFont>
+       <Name>Arial</Name>
+       <Height>-10</Height>
+       <PitchFamily>34</PitchFamily>
+       <Weight>400</Weight>
+       <Italic>0</Italic>
+       <UnderLine>0</UnderLine>
+       <StrikeOut>0</StrikeOut>
+       <Color>8388608</Color>
+      </ValuesFont>
+      <LegendFont>
+       <Name>Arial</Name>
+       <Height>12</Height>
+       <PitchFamily>34</PitchFamily>
+       <Weight>400</Weight>
+       <Italic>0</Italic>
+       <UnderLine>0</UnderLine>
+       <StrikeOut>0</StrikeOut>
+       <Color>0</Color>
+      </LegendFont>
+     </Fonts>
+     <SharedXAxis>true</SharedXAxis>
+     <SharedYAxis>false</SharedYAxis>
+     <SharedZAxis>false</SharedZAxis>
+     <XAxes>
+      <Axis>
+       <Minimum>0.0</Minimum>
+       <Maximum>5.00199999999967</Maximum>
+       <Linear>true</Linear>
+       <Scaling>3</Scaling>
+       <Label>time</Label>
+      </Axis>
+     </XAxes>
+     <YAxes>
+      <Axis>
+       <Minimum>0.0</Minimum>
+       <Maximum>25.0</Maximum>
+       <Linear>true</Linear>
+       <Scaling>0</Scaling>
+       <Label>room temp</Label>
+      </Axis>
+     </YAxes>
+     <ZAxes>
+     </ZAxes>
+     <Curves>
+      <Curve>
+       <LineColor>16711935</LineColor>
+       <LineStyle>1</LineStyle>
+       <TickColor>16711935</TickColor>
+       <TickStyle>0</TickStyle>
+       <CurveVisible>true</CurveVisible>
+       <PixelThresshold>10</PixelThresshold>
+       <LineThickness>1</LineThickness>
+       <LineOrder>1</LineOrder>
+       <ShowYValues>true</ShowYValues>
+       <XCurveData>
+        <ShowUnit>true</ShowUnit>
+        <VarName>time</VarName>
+       </XCurveData>
+       <YCurveData>
+        <ShowUnit>true</ShowUnit>
+        <VarName>Troom\effort</VarName>
+       </YCurveData>
+      </Curve>
+     </Curves>
+     <Legenda>
+      <ShowLegenda>true</ShowLegenda>
+      <BorderPenColor>12624260</BorderPenColor>
+      <BackgroundColor>16777215</BackgroundColor>
+     </Legenda>
+    </Plot>
+    <Plot>
+     <PlotType>GraphPlot</PlotType>
+     <BasePlot>
+       <PlotId>3</PlotId>
+       <UseWindowsBGColor>false</UseWindowsBGColor>
+       <BGColor>16777215</BGColor>
+       <PlotIsVisible>true</PlotIsVisible>
+     </BasePlot>
+     <Grid>
+      <DrawGrid>true</DrawGrid>
+      <GridColor>15780518</GridColor>
+      <GridBorderLineColor>12624260</GridBorderLineColor>
+      <GridZeroLineColor>0</GridZeroLineColor>
+      <XTicks>10</XTicks>
+      <YTicks>10</YTicks>
+      <ZTicks>10</ZTicks>
+      <Use3DLook>false</Use3DLook>
+     </Grid>
+     <PlotBGColor>16777215</PlotBGColor>
+     <ShowPlotTitle>true</ShowPlotTitle>
+     <TitlePosition>1</TitlePosition>
+     <PlotTitle>heat anticipation</PlotTitle>
+     <ShowXValues>true</ShowXValues>
+     <Fonts>
+      <TitleFont>
+       <Name>Arial</Name>
+       <Height>-10</Height>
+       <PitchFamily>34</PitchFamily>
+       <Weight>400</Weight>
+       <Italic>0</Italic>
+       <UnderLine>0</UnderLine>
+       <StrikeOut>0</StrikeOut>
+       <Color>0</Color>
+      </TitleFont>
+      <LabelFont>
+       <Name>Arial</Name>
+       <Height>-10</Height>
+       <PitchFamily>34</PitchFamily>
+       <Weight>400</Weight>
+       <Italic>0</Italic>
+       <UnderLine>0</UnderLine>
+       <StrikeOut>0</StrikeOut>
+       <Color>0</Color>
+      </LabelFont>
+      <ValuesFont>
+       <Name>Arial</Name>
+       <Height>-10</Height>
+       <PitchFamily>34</PitchFamily>
+       <Weight>400</Weight>
+       <Italic>0</Italic>
+       <UnderLine>0</UnderLine>
+       <StrikeOut>0</StrikeOut>
+       <Color>8388608</Color>
+      </ValuesFont>
+      <LegendFont>
+       <Name>Arial</Name>
+       <Height>12</Height>
+       <PitchFamily>34</PitchFamily>
+       <Weight>400</Weight>
+       <Italic>0</Italic>
+       <UnderLine>0</UnderLine>
+       <StrikeOut>0</StrikeOut>
+       <Color>0</Color>
+      </LegendFont>
+     </Fonts>
+     <SharedXAxis>true</SharedXAxis>
+     <SharedYAxis>false</SharedYAxis>
+     <SharedZAxis>false</SharedZAxis>
+     <XAxes>
+      <Axis>
+       <Minimum>0.0</Minimum>
+       <Maximum>5.00199999999967</Maximum>
+       <Linear>true</Linear>
+       <Scaling>3</Scaling>
+       <Label>time</Label>
+      </Axis>
+     </XAxes>
+     <YAxes>
+      <Axis>
+       <Minimum>-0.5</Minimum>
+       <Maximum>0.5</Maximum>
+       <Linear>true</Linear>
+       <Scaling>2</Scaling>
+       <Label>heat anticipation</Label>
+      </Axis>
+     </YAxes>
+     <ZAxes>
+     </ZAxes>
+     <Curves>
+      <Curve>
+       <LineColor>255</LineColor>
+       <LineStyle>1</LineStyle>
+       <TickColor>255</TickColor>
+       <TickStyle>0</TickStyle>
+       <CurveVisible>true</CurveVisible>
+       <PixelThresshold>10</PixelThresshold>
+       <LineThickness>1</LineThickness>
+       <LineOrder>1</LineOrder>
+       <ShowYValues>true</ShowYValues>
+       <XCurveData>
+        <ShowUnit>true</ShowUnit>
+        <VarName>time</VarName>
+       </XCurveData>
+       <YCurveData>
+        <ShowUnit>true</ShowUnit>
+        <VarName>heat_anticip\output</VarName>
+       </YCurveData>
+      </Curve>
+     </Curves>
+     <Legenda>
+      <ShowLegenda>true</ShowLegenda>
+      <BorderPenColor>12624260</BorderPenColor>
+      <BackgroundColor>16777215</BackgroundColor>
+     </Legenda>
+    </Plot>
+   </Plots>
+   <PlotPanels>
+    <PlotPanel>
+     <PlotPanelId>1</PlotPanelId>
+     <PlotPanelVisible>true</PlotPanelVisible>
+     <Name>Central Heating System - Plots</Name>
+     <Tiling>2</Tiling>
+     <PlotIds>
+       <PlotId>1</PlotId>
+       <PlotId>2</PlotId>
+       <PlotId>3</PlotId>
+     </PlotIds>
+     <ToggleState>Base</ToggleState>
+    </PlotPanel>
+   </PlotPanels>
+   <WindowRectangles virtualDesktopWidth="3360" virtualDesktopHeight="1080">
+     <WindowRectangle monitor="0" left="0" top="0" right="1920" bottom="1080" plotpanelid="1">
+0.192708 0.119444 0.766667 0.719444
+     </WindowRectangle>
+   </WindowRectangles>
+  </PlotSpecs>
+  <RunSpecs>
+   <SimulatorSettings>
+    <StartTime>0.0</StartTime>
+    <FinishTime>5.0</FinishTime>
+    <Warp>true</Warp>
+    <FPGonio>true</FPGonio>
+    <UseOutputAfterEach>false</UseOutputAfterEach>
+    <OutputAfterEach>0.1</OutputAfterEach>
+    <EventEpsilon>1.0e-6</EventEpsilon>
+    <AlgebraicTolerance>1.0e-7</AlgebraicTolerance>
+    <SteadyStateAnalysis>false</SteadyStateAnalysis>
+    <UpdateHoldInstructions>false</UpdateHoldInstructions>
+   </SimulatorSettings>
+   <IntegrationMethods>
+    <IntegrationMethod>
+     <Name>Euler</Name>
+     <StepSize>0.1</StepSize>
+     <AutoStepSize>false</AutoStepSize>
+    </IntegrationMethod>
+    <IntegrationMethod>
+     <Name>BackwardEuler</Name>
+     <AbsoluteTolerance>1.0e-5</AbsoluteTolerance>
+     <RelativeTolerance>1.0e-5</RelativeTolerance>
+     <AlgebraicAbsoluteTolerance>1.0e-5</AlgebraicAbsoluteTolerance>
+     <AlgebraicRelativeTolerance>1.0e-5</AlgebraicRelativeTolerance>
+     <StepSize>0.01</StepSize>
+     <Alpha>1.0</Alpha>
+    </IntegrationMethod>
+    <IntegrationMethod>
+     <Name>AdamsBashforth</Name>
+     <StepSize>0.1</StepSize>
+     <AutoStepSize>false</AutoStepSize>
+    </IntegrationMethod>
+    <IntegrationMethod>
+     <Name>RungeKutta2</Name>
+     <StepSize>0.01</StepSize>
+     <AutoStepSize>false</AutoStepSize>
+    </IntegrationMethod>
+    <IntegrationMethod>
+     <Name>RungeKutta4</Name>
+     <StepSize>0.002</StepSize>
+     <AutoStepSize>false</AutoStepSize>
+    </IntegrationMethod>
+    <IntegrationMethod>
+     <Name>RungeKutta8</Name>
+     <UseInitialStepSize>false</UseInitialStepSize>
+     <InitialStepSize>0.001</InitialStepSize>
+     <UseMaximumStepSize>false</UseMaximumStepSize>
+     <MaximumStepSize>1.0</MaximumStepSize>
+     <AbsoluteTolerance>1.0e-6</AbsoluteTolerance>
+     <RelativeTolerance>1.0e-6</RelativeTolerance>
+     <SafetyFactor>0.9</SafetyFactor>
+     <Factor1>0.33</Factor1>
+     <Factor2>6.0</Factor2>
+     <Beta>0.0</Beta>
+     <UseMaxNrSteps>false</UseMaxNrSteps>
+     <MaxNrSteps>100000</MaxNrSteps>
+     <UseStiffDetection>false</UseStiffDetection>
+     <MaxNrStiffnessSteps>1000</MaxNrStiffnessSteps>
+    </IntegrationMethod>
+    <IntegrationMethod>
+     <Name>RungeKuttaFehlberg</Name>
+     <UseInitialStepSize>false</UseInitialStepSize>
+     <InitialStepSize>0.1</InitialStepSize>
+     <UseMaximumStepSize>false</UseMaximumStepSize>
+     <MaximumStepSize>1.0</MaximumStepSize>
+     <AbsoluteTolerance>1.0e-6</AbsoluteTolerance>
+     <RelativeTolerance>1.0e-6</RelativeTolerance>
+    </IntegrationMethod>
+    <IntegrationMethod>
+     <Name>VodeAdams</Name>
+     <UseInitialStepSize>false</UseInitialStepSize>
+     <InitialStepSize>0.1</InitialStepSize>
+     <UseMaximumStepSize>false</UseMaximumStepSize>
+     <MaximumStepSize>1.0</MaximumStepSize>
+     <AbsoluteTolerance>1.0e-6</AbsoluteTolerance>
+     <RelativeTolerance>1.0e-6</RelativeTolerance>
+     <VodeUseBDF>true</VodeUseBDF>
+     <VodeUseNewton>true</VodeUseNewton>
+    </IntegrationMethod>
+    <IntegrationMethod>
+     <Name>BDFMethod</Name>
+     <AbsoluteTolerance>1.0e-5</AbsoluteTolerance>
+     <RelativeTolerance>1.0e-5</RelativeTolerance>
+     <AlgebraicAbsoluteTolerance>1.0e-5</AlgebraicAbsoluteTolerance>
+     <AlgebraicRelativeTolerance>1.0e-5</AlgebraicRelativeTolerance>
+     <UseInitialStepSize>false</UseInitialStepSize>
+     <InitialStepSize>0.1</InitialStepSize>
+     <UseMaximumStepSize>false</UseMaximumStepSize>
+     <MaximumStepSize>1.0</MaximumStepSize>
+    </IntegrationMethod>
+    <IntegrationMethod>
+     <Name>MeBDFiMethod</Name>
+     <AbsoluteTolerance>1.0e-5</AbsoluteTolerance>
+     <RelativeTolerance>1.0e-5</RelativeTolerance>
+     <AlgebraicAbsoluteTolerance>1.0e-5</AlgebraicAbsoluteTolerance>
+     <AlgebraicRelativeTolerance>1.0e-5</AlgebraicRelativeTolerance>
+     <UseInitialStepSize>false</UseInitialStepSize>
+     <InitialStepSize>0.001</InitialStepSize>
+     <UseMaximumStepSize>false</UseMaximumStepSize>
+     <MaximumStepSize>1.0</MaximumStepSize>
+    </IntegrationMethod>
+    <SelectedIntegrationMethod>4</SelectedIntegrationMethod>
+   </IntegrationMethods>
+  </RunSpecs>
+  <MultipleRun>
+   <NrSteps>10</NrSteps>
+   <CopyFromStates>false</CopyFromStates>
+   <JoinParameterVariation>true</JoinParameterVariation>
+   <ClearAfterRun>true</ClearAfterRun>
+   <RedrawAfterRun>false</RedrawAfterRun>
+   <DrawDuringSimulation>true</DrawDuringSimulation>
+   <ActionBeforeOptimization>0</ActionBeforeOptimization>
+   <CompareValue>0.0</CompareValue>
+   <UseCompareValue>true</UseCompareValue>
+   <MultipleRunType>MultipleRun</MultipleRunType>
+   <Minimize>true</Minimize>
+   <OptimizationVariable></OptimizationVariable>
+   <ResulVarUsage>UseEndValue</ResulVarUsage>
+   <Tolerance>0.01</Tolerance>
+   <OptimizationMethod>BroydonFletcherGoldfarbShanno</OptimizationMethod>
+   <MultipleRunVariables>
+   </MultipleRunVariables>
+  </MultipleRun>
+  <ExportData>
+   <WriteAsText>true</WriteAsText>
+   <ReadAsText>true</ReadAsText>
+   <WriteHeader>true</WriteHeader>
+   <ReadHeader>true</ReadHeader>
+   <ReadFilename></ReadFilename>
+   <WriteFilename></WriteFilename>
+   <DoWrite>false</DoWrite>
+   <ExportVariables>
+   </ExportVariables>
+   <ImportVariables>
+   </ImportVariables>
+  </ExportData>
+  <BreakPoints>
+  </BreakPoints>
+  <AnimationPlayback>
+   <PlaybackSpeed>1.0</PlaybackSpeed>
+  </AnimationPlayback>
+</ExpData>
+  </Experiment>
+</Experiments>
+</Document>

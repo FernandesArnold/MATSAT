@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document>
+ <Model version="4.8" build="4.8.2.10124">
+  <Sidops><![CDATA[model 128 184
+ description '<Information>
+ <Description>
+    <Version>4.8</Version>
+<IsMainModel>0</IsMainModel>
+  <KeepParameterValues>False</KeepParameterValues>
+    <LibraryPath>C:\Users\af2vc\OneDrive - University of Missouri\Documents\MATLAB\SP 2022\Text_parser\test_models\TwoTank355ProcessSupervision.emx</LibraryPath>
+  <TimeStamp>2022-9-12 15:03:06</TimeStamp>
+</Description>
+</Information>';
+ type Mainmodel
+ end;
+ implementation bg
+  submodels
+   C 328 280
+    description '<Information>
+ <Description>
+    <Version>4.2</Version>
+<IsMainModel>1</IsMainModel>
+  <KeepParameterValues>False</KeepParameterValues>
+    <LibraryPath>Bond Graph\C.emx</LibraryPath>
+  <TimeStamp>2011-11-29 15:58:35</TimeStamp>
+</Description>
+</Information>';
+    type C
+     ports
+      power in p;
+      signal out state;
+     restrictions
+      causality preferred out p;
+    end;
+    icon bg bottom
+     figures
+      text 'C' 328 280 color 0 18 bold;
+    end;
+    implementation eq
+parameters
+	real c = 1;
+equations
+	state = int(p.f);
+	p.e = state / c;
+implementation_end;
+   C1 440 280
+    description '<Information>
+ <Description>
+    <Version>4.2</Version>
+<IsMainModel>1</IsMainModel>
+  <KeepParameterValues>False</KeepParameterValues>
+    <LibraryPath>Bond Graph\C.emx</LibraryPath>
+  <TimeStamp>2011-11-29 15:58:35</TimeStamp>
+</Description>
+</Information>';
+    type C
+     ports
+      power in p;
+      signal out state;
+     restrictions
+      causality preferred out p;
+    end;
+    icon bg bottom
+     figures
+      text 'C' 440 280 color 0 18 bold;
+    end;
+    implementation eq
+parameters
+	real c = 1;
+equations
+	state = int(p.f);
+	p.e = state / c;
+implementation_end;
+   ONE0 384 320
+    description '<Information><Description><Version>4.2</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues><LibraryPath>Bond Graph\OneJunction.emx</LibraryPath><TimeStamp>2011-11-29 16:17:51</TimeStamp><AllowLibraryUpdate>True</AllowLibraryUpdate></Description></Information>';
+    knot OneJunction
+     ports
+      power knot duplicatable none p [1];
+      signal knot out flow [1];
+     restrictions
+      causality constraint one_out p;
+    end;
+    icon bg
+     figures
+      text '1' 384 320 color 0 18 bold;
+    end;
+    implementation eq
+equations
+	sum (direct (p.e)) = 0;
+	equal (collect (p.f));
+	flow = first (p.f);
+implementation_end;
+   R 384 280
+    description '<Information>
+ <Description>
+    <Version>4.2</Version>
+<IsMainModel>1</IsMainModel>
+  <KeepParameterValues>False</KeepParameterValues>
+    <LibraryPath>Bond Graph\R.emx</LibraryPath>
+  <TimeStamp>2011-11-29 16:35:37</TimeStamp>
+</Description>
+</Information>';
+    type R
+     ports
+      power in p;
+    end;
+    icon bg bottom
+     figures
+      text 'R' 384 280 color 0 18 bold;
+    end;
+    implementation eq
+parameters
+	real r = 1.0;
+equations
+	p.e = r * p.f;
+implementation_end;
+   Sf 272 320
+    description '<Information>
+ <Description>
+    <Version>4.2</Version>
+<IsMainModel>1</IsMainModel>
+  <KeepParameterValues>False</KeepParameterValues>
+    <LibraryPath>Bond Graph\Sf.emx</LibraryPath>
+  <TimeStamp>2011-11-29 16:38:03</TimeStamp>
+</Description>
+</Information>';
+    type Sf
+     ports
+      power out p;
+     restrictions
+      causality fixed in p;
+    end;
+    icon bg bottom
+     figures
+      text 'Sf' 272 320 color 0 18 bold;
+    end;
+    implementation eq
+parameters
+	real flow = 1;
+variables
+	real effort;
+equations
+	p.f = flow;
+	effort = p.e;
+implementation_end;
+   ZERO0 328 320
+    description '<Information><Description><Version>4.2</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues><LibraryPath>Bond Graph\ZeroJunction.emx</LibraryPath><TimeStamp>2011-11-29 16:45:16</TimeStamp><AllowLibraryUpdate>True</AllowLibraryUpdate></Description></Information>';
+    knot ZeroJunction
+     ports
+      power knot duplicatable none p [1];
+      signal knot out effort [1];
+     restrictions
+      causality constraint one_in p;
+    end;
+    icon bg
+     figures
+      text '0' 328 320 color 0 18 bold;
+    end;
+    implementation eq
+equations
+	sum (direct (p.f)) = 0;
+	equal (collect (p.e));
+	effort = first (p.e);
+implementation_end;
+   ZERO1 440 320
+    description '<Information><Description><Version>4.2</Version><IsMainModel>1</IsMainModel><KeepParameterValues>False</KeepParameterValues><LibraryPath>Bond Graph\ZeroJunction.emx</LibraryPath><TimeStamp>2011-11-29 16:45:16</TimeStamp><AllowLibraryUpdate>True</AllowLibraryUpdate></Description></Information>';
+    knot ZeroJunction
+     ports
+      power knot duplicatable none p [1];
+      signal knot out effort [1];
+     restrictions
+      causality constraint one_in p;
+    end;
+    icon bg
+     figures
+      text '0' 440 320 color 0 18 bold;
+    end;
+    implementation eq
+equations
+	sum (direct (p.f)) = 0;
+	equal (collect (p.e));
+	effort = first (p.e);
+implementation_end;
+  end;
+  connections
+   ONE0\p => R\p;
+   ONE0\p => ZERO1\p;
+   Sf\p => ZERO0\p;
+   ZERO0\p => C\p;
+   ZERO0\p => ONE0\p;
+   ZERO1\p => C1\p;
+  end;
+ implementation_end;
+]]>
+</Sidops>
+ </Model>
+ <Experiments>
+     <DefaultExperiment><![CDATA[Experiment 1]]>
+</DefaultExperiment>
+  <Experiment>
+    <Name>Experiment 1</Name>
+    <CreatedBy></CreatedBy>
+    <Info></Info>
+<ExpData>
+  <VersionNumber>4.8</VersionNumber>
+  <ModelProperties>
+  </ModelProperties>
+  <Variables>
+   <Parameters>
+   </Parameters>
+  </Variables>
+  <PlotSpecs>
+   <VarNames>
+    <VarName>time</VarName>
+   </VarNames>
+   <Plots>
+    <Plot>
+     <PlotType>GraphPlot</PlotType>
+     <BasePlot>
+       <PlotId>1</PlotId>
+       <UseWindowsBGColor>false</UseWindowsBGColor>
+       <BGColor>16777215</BGColor>
+       <PlotIsVisible>true</PlotIsVisible>
+     </BasePlot>
+     <Grid>
+      <DrawGrid>true</DrawGrid>
+      <GridColor>15780518</GridColor>
+      <GridBorderLineColor>12624260</GridBorderLineColor>
+      <GridZeroLineColor>0</GridZeroLineColor>
+      <XTicks>10</XTicks>
+      <YTicks>10</YTicks>
+      <ZTicks>10</ZTicks>
+      <Use3DLook>false</Use3DLook>
+     </Grid>
+     <PlotBGColor>16777215</PlotBGColor>
+     <ShowPlotTitle>true</ShowPlotTitle>
+     <TitlePosition>1</TitlePosition>
+     <PlotTitle>model</PlotTitle>
+     <ShowXValues>true</ShowXValues>
+     <Fonts>
+      <TitleFont>
+       <Name>Arial</Name>
+       <Height>12</Height>
+       <PitchFamily>34</PitchFamily>
+       <Weight>400</Weight>
+       <Italic>0</Italic>
+       <UnderLine>0</UnderLine>
+       <StrikeOut>0</StrikeOut>
+       <Color>0</Color>
+      </TitleFont>
+      <LabelFont>
+       <Name>Arial</Name>
+       <Height>12</Height>
+       <PitchFamily>34</PitchFamily>
+       <Weight>400</Weight>
+       <Italic>0</Italic>
+       <UnderLine>0</UnderLine>
+       <StrikeOut>0</StrikeOut>
+       <Color>0</Color>
+      </LabelFont>
+      <ValuesFont>
+       <Name>Arial</Name>
+       <Height>10</Height>
+       <PitchFamily>34</PitchFamily>
+       <Weight>400</Weight>
+       <Italic>0</Italic>
+       <UnderLine>0</UnderLine>
+       <StrikeOut>0</StrikeOut>
+       <Color>0</Color>
+      </ValuesFont>
+      <LegendFont>
+       <Name>Arial</Name>
+       <Height>12</Height>
+       <PitchFamily>34</PitchFamily>
+       <Weight>400</Weight>
+       <Italic>0</Italic>
+       <UnderLine>0</UnderLine>
+       <StrikeOut>0</StrikeOut>
+       <Color>0</Color>
+      </LegendFont>
+     </Fonts>
+     <SharedXAxis>true</SharedXAxis>
+     <SharedYAxis>true</SharedYAxis>
+     <SharedZAxis>false</SharedZAxis>
+     <XAxes>
+      <Axis>
+       <Minimum>0.0</Minimum>
+       <Maximum>10.0</Maximum>
+       <Linear>true</Linear>
+       <Scaling>3</Scaling>
+       <Label>time</Label>
+      </Axis>
+     </XAxes>
+     <YAxes>
+      <Axis>
+       <Minimum>0.0</Minimum>
+       <Maximum>10.0</Maximum>
+       <Linear>true</Linear>
+       <Scaling>2</Scaling>
+       <Label></Label>
+      </Axis>
+     </YAxes>
+     <ZAxes>
+     </ZAxes>
+     <Curves>
+      <Curve>
+       <LineColor>3355111</LineColor>
+       <LineStyle>1</LineStyle>
+       <TickColor>3355111</TickColor>
+       <TickStyle>0</TickStyle>
+       <CurveVisible>true</CurveVisible>
+       <PixelThresshold>1</PixelThresshold>
+       <LineThickness>2</LineThickness>
+       <LineOrder>1</LineOrder>
+       <ShowYValues>true</ShowYValues>
+       <XCurveData>
+        <ShowUnit>true</ShowUnit>
+        <VarName>time</VarName>
+       </XCurveData>
+      </Curve>
+     </Curves>
+     <Legenda>
+      <ShowLegenda>true</ShowLegenda>
+      <BorderPenColor>0</BorderPenColor>
+      <BackgroundColor>16777215</BackgroundColor>
+     </Legenda>
+    </Plot>
+   </Plots>
+   <PlotPanels>
+    <PlotPanel>
+     <PlotPanelId>1</PlotPanelId>
+     <PlotPanelVisible>true</PlotPanelVisible>
+     <Name>Window 1</Name>
+     <Tiling>0</Tiling>
+     <PlotIds>
+       <PlotId>1</PlotId>
+     </PlotIds>
+     <ToggleState>Base</ToggleState>
+    </PlotPanel>
+   </PlotPanels>
+  </PlotSpecs>
+  <RunSpecs>
+   <SimulatorSettings>
+    <StartTime>0.0</StartTime>
+    <FinishTime>10.0</FinishTime>
+    <AllowPassFinishTime>false</AllowPassFinishTime>
+    <Warp>false</Warp>
+    <FPGonio>false</FPGonio>
+    <UseOutputAfterEach>false</UseOutputAfterEach>
+    <OutputAfterEach>0.1</OutputAfterEach>
+    <EventEpsilon>1.0e-6</EventEpsilon>
+    <AlgebraicTolerance>1.0e-7</AlgebraicTolerance>
+    <SteadyStateAnalysis>false</SteadyStateAnalysis>
+    <UpdateHoldInstructions>true</UpdateHoldInstructions>
+   </SimulatorSettings>
+   <IntegrationMethods>
+    <IntegrationMethod>
+     <Name>Euler</Name>
+     <StepSize>0.01</StepSize>
+     <AutoStepSize>false</AutoStepSize>
+    </IntegrationMethod>
+    <IntegrationMethod>
+     <Name>BackwardEuler</Name>
+     <AbsoluteTolerance>1.0e-5</AbsoluteTolerance>
+     <RelativeTolerance>1.0e-5</RelativeTolerance>
+     <AlgebraicAbsoluteTolerance>1.0e-5</AlgebraicAbsoluteTolerance>
+     <AlgebraicRelativeTolerance>1.0e-5</AlgebraicRelativeTolerance>
+     <StepSize>0.01</StepSize>
+     <Alpha>1.0</Alpha>
+    </IntegrationMethod>
+    <IntegrationMethod>
+     <Name>AdamsBashforth</Name>
+     <StepSize>0.01</StepSize>
+     <AutoStepSize>false</AutoStepSize>
+    </IntegrationMethod>
+    <IntegrationMethod>
+     <Name>RungeKutta2</Name>
+     <StepSize>0.01</StepSize>
+     <AutoStepSize>false</AutoStepSize>
+    </IntegrationMethod>
+    <IntegrationMethod>
+     <Name>RungeKutta4</Name>
+     <StepSize>0.01</StepSize>
+     <AutoStepSize>false</AutoStepSize>
+    </IntegrationMethod>
+    <IntegrationMethod>
+     <Name>RungeKutta8</Name>
+     <UseInitialStepSize>false</UseInitialStepSize>
+     <InitialStepSize>0.001</InitialStepSize>
+     <UseMaximumStepSize>false</UseMaximumStepSize>
+     <MaximumStepSize>1.0</MaximumStepSize>
+     <AbsoluteTolerance>1.0e-6</AbsoluteTolerance>
+     <RelativeTolerance>1.0e-6</RelativeTolerance>
+     <SafetyFactor>0.9</SafetyFactor>
+     <Factor1>0.33</Factor1>
+     <Factor2>6.0</Factor2>
+     <Beta>0.0</Beta>
+     <UseMaxNrSteps>false</UseMaxNrSteps>
+     <MaxNrSteps>100000</MaxNrSteps>
+     <UseStiffDetection>false</UseStiffDetection>
+     <MaxNrStiffnessSteps>1000</MaxNrStiffnessSteps>
+    </IntegrationMethod>
+    <IntegrationMethod>
+     <Name>RungeKuttaFehlberg</Name>
+     <UseInitialStepSize>false</UseInitialStepSize>
+     <InitialStepSize>0.001</InitialStepSize>
+     <UseMaximumStepSize>false</UseMaximumStepSize>
+     <MaximumStepSize>1.0</MaximumStepSize>
+     <AbsoluteTolerance>1.0e-6</AbsoluteTolerance>
+     <RelativeTolerance>1.0e-6</RelativeTolerance>
+    </IntegrationMethod>
+    <IntegrationMethod>
+     <Name>VodeAdams</Name>
+     <UseInitialStepSize>false</UseInitialStepSize>
+     <InitialStepSize>0.001</InitialStepSize>
+     <UseMaximumStepSize>false</UseMaximumStepSize>
+     <MaximumStepSize>1.0</MaximumStepSize>
+     <AbsoluteTolerance>1.0e-6</AbsoluteTolerance>
+     <RelativeTolerance>1.0e-6</RelativeTolerance>
+     <VodeUseBDF>true</VodeUseBDF>
+     <VodeUseNewton>true</VodeUseNewton>
+    </IntegrationMethod>
+    <IntegrationMethod>
+     <Name>BDFMethod</Name>
+     <AbsoluteTolerance>1.0e-5</AbsoluteTolerance>
+     <RelativeTolerance>1.0e-5</RelativeTolerance>
+     <AlgebraicAbsoluteTolerance>1.0e-5</AlgebraicAbsoluteTolerance>
+     <AlgebraicRelativeTolerance>1.0e-5</AlgebraicRelativeTolerance>
+     <UseInitialStepSize>false</UseInitialStepSize>
+     <InitialStepSize>0.001</InitialStepSize>
+     <UseMaximumStepSize>false</UseMaximumStepSize>
+     <MaximumStepSize>1.0</MaximumStepSize>
+    </IntegrationMethod>
+    <IntegrationMethod>
+     <Name>MeBDFiMethod</Name>
+     <AbsoluteTolerance>1.0e-5</AbsoluteTolerance>
+     <RelativeTolerance>1.0e-5</RelativeTolerance>
+     <AlgebraicAbsoluteTolerance>1.0e-5</AlgebraicAbsoluteTolerance>
+     <AlgebraicRelativeTolerance>1.0e-5</AlgebraicRelativeTolerance>
+     <UseInitialStepSize>false</UseInitialStepSize>
+     <InitialStepSize>0.001</InitialStepSize>
+     <UseMaximumStepSize>false</UseMaximumStepSize>
+     <MaximumStepSize>1.0</MaximumStepSize>
+    </IntegrationMethod>
+    <SelectedIntegrationMethod>8</SelectedIntegrationMethod>
+   </IntegrationMethods>
+  </RunSpecs>
+  <MultipleRun>
+   <NrSteps>10</NrSteps>
+   <CopyFromStates>false</CopyFromStates>
+   <JoinParameterVariation>true</JoinParameterVariation>
+   <ClearAfterRun>true</ClearAfterRun>
+   <RedrawAfterRun>false</RedrawAfterRun>
+   <DrawDuringSimulation>true</DrawDuringSimulation>
+   <ActionBeforeOptimization>0</ActionBeforeOptimization>
+   <CompareValue>0.0</CompareValue>
+   <UseCompareValue>true</UseCompareValue>
+   <MultipleRunType>MultipleRun</MultipleRunType>
+   <Minimize>true</Minimize>
+   <OptimizationVariable></OptimizationVariable>
+   <ResulVarUsage>UseEndValue</ResulVarUsage>
+   <Tolerance>0.001</Tolerance>
+   <OptimizationMethod>BroydonFletcherGoldfarbShanno</OptimizationMethod>
+   <MultipleRunVariables>
+   </MultipleRunVariables>
+  </MultipleRun>
+  <ExportData>
+   <WriteAsText>true</WriteAsText>
+   <ReadAsText>true</ReadAsText>
+   <WriteHeader>true</WriteHeader>
+   <ReadHeader>true</ReadHeader>
+   <ReadFilename></ReadFilename>
+   <WriteFilename></WriteFilename>
+   <DoWrite>false</DoWrite>
+   <ExportVariables>
+   </ExportVariables>
+   <ImportVariables>
+   </ImportVariables>
+  </ExportData>
+  <BreakPoints>
+  </BreakPoints>
+</ExpData>
+  </Experiment>
+</Experiments>
+</Document>
